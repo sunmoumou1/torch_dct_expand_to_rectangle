@@ -1,7 +1,7 @@
 # torch_dct_expand_to_rectangle
 
-# Headline Notice!!!!
- This repository is a modified version of the original `torch_dct`. The original code from the repository only supported discrete cosine transform (DCT) and inverse discrete cosine transform (IDCT) on square matrices. I have extended the functionality to support DCT and IDCT on matrices with unequal height and width, allowing for broader applicability in scenarios where non-square matrices are involved.
+# Headline News!!!!
+This repository is a modified version of the original [torch_dct](https://github.com/zh217/torch-dct). The original code from the repository only supported discrete cosine transform (DCT) and inverse discrete cosine transform (IDCT) on square matrices. I have extended the functionality to support DCT and IDCT on matrices with unequal height and width, allowing for broader applicability in scenarios where non-square matrices are involved.
 
 
 # DCT Principle
@@ -42,7 +42,7 @@ The formula is very similar to DCT, but it operates on the frequency domain coef
 
 To convert DCT using FFT, we first perform symmetry operations on the signal. The key is to rearrange the signal's odd and even components to form a special symmetric signal.
 
-Let the input signal \( x_n \) have a length of \( N \). We rearrange and flip the signal to form a new signal \( v_n \), also of length \( N \), defined as follows:
+Let the input signal $x_n$ have a length of $N$. We rearrange and flip the signal to form a new signal $v_n$, also of length $N$, defined as follows:
 
 $$
 v = [x_0, x_2, \ldots, x_{N-2}, x_{N-1}, x_{N-3}, \ldots, x_1]
@@ -50,10 +50,10 @@ $$
 
 Where:
 
-- \( [x_0, x_2, \ldots, x_{N-2}] \) are the elements at even indices of the signal.
-- \( [x_{N-1}, x_{N-3}, \ldots, x_1] \) are the reversed elements at odd indices of the signal.
+- $[x_0, x_2, \ldots, x_{N-2}]$ are the elements at even indices of the signal.
+- $[x_{N-1}, x_{N-3}, \ldots, x_1]$ are the reversed elements at odd indices of the signal.
 
-This rearrangement symmetrically structures the original signal to create components that correspond to the cosine elements in Fourier transforms.
+This rearrangement symmetrically structures the original signal to create components that correspond to the cosine elements in Fourier transforms (I will show this later!).
 
 FFT (Fast Fourier Transform) is a fast algorithm for computing the Discrete Fourier Transform (DFT), given by:
 
@@ -61,7 +61,7 @@ $$
 X_k = \sum_{n=0}^{N-1} x_n e^{-i \frac{2\pi nk}{N}}, \quad k = 0, 1, \ldots, N-1
 $$
 
-Using Euler's formula \( e^{-i\theta} = \cos(\theta) - i\sin(\theta) \), the formula can be decomposed into:
+Using Euler's formula $e^{-i\theta} = \cos(\theta) - i\sin(\theta)$, the formula can be decomposed into:
 
 $$
 X_k = \sum_{n=0}^{N-1} x_n \left[\cos\left(\frac{2\pi nk}{N}\right) - i\sin\left(\frac{2\pi nk}{N}\right)\right]
@@ -91,9 +91,7 @@ A crucial part of understanding this function lies in the following lines of cod
     V = Vc[:, :, 0] * W_r - Vc[:, :, 1] * W_i
 ```
 
-According to the definition:
-
-DCT is a transformation that converts the input signal into cosine basis frequency components, mathematically defined as:
+According to the definition: DCT is a transformation that converts the input signal into cosine basis frequency components, mathematically defined as:
 
 $$
 V_k = \sum_{n=0}^{N-1} x_n \cos\left(\frac{\pi (2n + 1) k}{2N}\right), \quad k = 0, 1, \ldots, N-1
@@ -115,7 +113,7 @@ $$
 = \sum_{n=0}^{N-1} x_n \left[\cos\left(\frac{2\pi nk}{2N}\right) \cos\left(-\frac{k\pi}{2N}\right) + \sin\left(\frac{2\pi nk}{2N}\right) \sin\left(-\frac{\pi k}{2N}\right)\right]
 $$
 
-Using the sum-to-product formulas:
+Using the formulas:
 
 $$
 \cos(\alpha + \beta) = \cos\alpha \cos\beta - \sin\alpha \sin\beta
@@ -135,24 +133,19 @@ An ingenious operation is to apply the `dct` function on an identity matrix, whi
 
 <span style="background:#fff88f">Here's a specific example:</span>
 
-Below is an example of a \( 4 \times 4 \) DCT matrix for better understanding:
+Below is an example of a $4 \times 4$ DCT matrix for better understanding:
 
 $$
 D = \sqrt{\frac{2}{4}} \begin{bmatrix} \frac{1}{\sqrt{2}} & \cos\left(\frac{\pi}{8}\right) & \cos\left(\frac{2\pi}{8}\right) & \cos\left(\frac{3\pi}{8}\right) \\ \frac{1}{\sqrt{2}} & \cos\left(\frac{3\pi}{8}\right) & \cos\left(\frac{6\pi}{8}\right) & \cos\left(\frac{9\pi}{8}\right) \\ \frac{1}{\sqrt{2}} & \cos\left(\frac{5\pi}{8}\right) & \cos\left(\frac{10\pi}{8}\right) & \cos\left(\frac{15\pi}{8}\right) \\ \frac{1}{\sqrt{2}} & \cos\left(\frac{7\pi}{8}\right) & \cos\left(\frac{14\pi}{8}\right) & \cos\left(\frac{21\pi}{8}\right) \end{bmatrix}
 $$
 
-Applying DCT-II to a \( 4 \times 4 \) identity matrix results in a DCT matrix \( D \). We construct this matrix row by row according to the DCT-II definition.
+Applying DCT function to a $4 \times 4$ identity matrix results in a DCT matrix $D$. We construct this matrix row by row according to the DCT definition.
 
-For a 1D signal \( x \) of length \( N \), the \( k \)-th DCT-II coefficient is defined as:
+For a 1D signal $x$ of length $N$, the $k$-th DCT coefficient is defined as:
 
 $$
 X_k = \alpha_k \sum_{n=0}^{N-1} x_n \cos\left(\frac{\pi}{N} \left(n + \frac{1}{2}\right) k\right),
 $$
-
-where:
-
-- \( \alpha_k = \sqrt{\frac{1}{N}} \) when \( k = 0 \);
-- \( \alpha_k = \sqrt{\frac{2}{N}} \) when \( k > 0 \).
 
 <span style="background:#fff88f">Taking the 0th row as an example:</span>
 
@@ -190,21 +183,21 @@ $$
 
 To understand the `idct` function, it is essential to first establish a key conclusion:
 
-For a real sequence \( x[n] \), its frequency domain representation \( X[k] \) exhibits conjugate symmetry:
+> For a real sequence $x[n]$, its frequency domain representation $X[k]$ exhibits conjugate symmetry:
 
 $$
 X[N - k] = \overline{X[k]},
 $$
 
-> Here is the proof of this conclusion.
+__Here is the proof of this conclusion:__
 
-The Discrete Fourier Transform (DFT) converts a time-domain signal \( x[n] \) into its frequency-domain representation \( X[k] \), defined as:
+The Discrete Fourier Transform (DFT) converts a time-domain signal $x[n]$ into its frequency-domain representation $X[k]$, defined as:
 
 $$
 X[k] = \sum_{n=0}^{N-1} x[n] e^{-j \frac{2\pi k n}{N}}.
 $$
 
-According to the DFT definition, by replacing \( k \) with \( N - k \):
+According to the DFT definition, by replacing $k$ with $N - k$:
 
 $$
 X[N - k] = \sum_{n=0}^{N-1} x[n] e^{-j \frac{2\pi (N - k) n}{N}}.
@@ -216,19 +209,19 @@ $$
 e^{-j \frac{2\pi (N - k) n}{N}} = e^{-j \frac{2\pi N n}{N}} \cdot e^{j \frac{2\pi k n}{N}}.
 $$
 
-Since \( e^{-j \frac{2\pi N n}{N}} = e^{-j 2\pi n} = 1 \) (as \( e^{-j 2\pi n} \) represents a full cycle rotation):
+Since $e^{-j \frac{2\pi N n}{N}} = e^{-j 2\pi n} = 1$ (as $e^{-j 2\pi n}$ represents a full cycle rotation):
 
 $$
 e^{-j \frac{2\pi (N - k) n}{N}} = e^{j \frac{2\pi k n}{N}}.
 $$
 
-Thus, \( X[N - k] \) becomes:
+Thus, $X[N - k]$ becomes:
 
 $$
 X[N - k] = \sum_{n=0}^{N-1} x[n] e^{j \frac{2\pi k n}{N}}.
 $$
 
-Consider the complex conjugate of \( X[k] \), \( \overline{X[k]} \):
+Consider the complex conjugate of $X[k]$, $\overline{X[k]}$:
 
 $$
 \overline{X[k]} = \overline{\sum_{n=0}^{N-1} x[n] e^{-j \frac{2\pi k n}{N}}}.
@@ -240,19 +233,13 @@ $$
 \overline{X[k]} = \sum_{n=0}^{N-1} \overline{x[n]} \cdot \overline{e^{-j \frac{2\pi k n}{N}}}.
 $$
 
-Since \( x[n] \) is real, \( \overline{x[n]} = x[n] \), and \( \overline{e^{-j \frac{2\pi k n}{N}}} = e^{j \frac{2\pi k n}{N}} \), therefore:
+Since $x[n]$ is real, $\overline{x[n]} = x[n]$, and $\overline{e^{-j \frac{2\pi k n}{N}}} = e^{j \frac{2\pi k n}{N}}$, therefore:
 
 $$
 \overline{X[k]} = \sum_{n=0}^{N-1} x[n] e^{j \frac{2\pi k n}{N}}.
 $$
 
-Comparing \( X[N - k] \) and \( \overline{X[k]} \):
-
-$$
-X[N - k] = \sum_{n=0}^{N-1} x[n] e^{j \frac{2\pi k n}{N}} = \overline{X[k]}.
-$$
-
-Thus, it is proven:
+Comparing $X[N - k]$ and $\overline{X[k]}$ yields:
 
 $$
 X[N - k] = \overline{X[k]}.
@@ -274,7 +261,7 @@ Note: Since torch.fft.irfft only handles the first half of the frequency domain,
 
 # Principle of `torch.fft.irfft`
 
-The core of `torch.fft.irfft` is the Inverse Discrete Fourier Transform (IDFT), which converts a frequency-domain complex sequence back into a time-domain real sequence. To understand the function's principle, we start with the standard inverse Fourier transform formula and utilize frequency-domain conjugate symmetry.
+To understand the function's principle, we start with the standard inverse Fourier transform formula and utilize frequency-domain conjugate symmetry.
 
 The standard inverse discrete Fourier transform formula is:
 
