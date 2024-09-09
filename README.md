@@ -300,26 +300,26 @@ $$
 e^{j \frac{2\pi (N-k) n}{N}} = e^{j 2\pi n} \cdot e^{-j \frac{2\pi k n}{N}} = e^{-j \frac{2\pi k n}{N}},
 $$
 
-since \( e^{j 2\pi n} = 1 \). Therefore:
+since $e^{j 2\pi n} = 1$. Therefore:
 
 $$
-\sum_{k=\frac{N}{2}+1}^{N-1} X[k] e^{j \frac{2\pi k n}{N}} = \sum_{k=1}^{\frac{N}{2}-1} \overline{X[k]} e^{-j \frac{2\pi k n}{N}}.
+\sum_{k=\frac{N}{2}+1}^{N-1} X[k] e^{j \frac{2\pi k n}{N}} = \sum_{k=1}^{\frac{N}{2}-1} \overline{X[k]} e^{-j \frac{2\pi k n}{N}}
 $$
 
 Substituting the above expression into the original formula:
 
 $$
-x[n] = \frac{1}{N} \left( X[0] + X\left[\frac{N}{2}\right](-1)^n + \sum_{k=1}^{\frac{N}{2}-1} \left(X[k] e^{j \frac{2\pi k n}{N}} + \overline{X[k]} e^{-j \frac{2\pi k n}{N}}\right) \right).
+x[n] = \frac{1}{N} \left( X[0] + X\left[\frac{N}{2}\right](-1)^n + \sum_{k=1}^{\frac{N}{2}-1} \left(X[k] e^{j \frac{2\pi k n}{N}} + \overline{X[k]} e^{-j \frac{2\pi k n}{N}}\right) \right)
 $$
 
 Notice that \( X[k] e^{j \frac{2\pi k n}{N}} + \overline{X[k]} e^{-j \frac{2\pi k n}{N}} \) is in real form:
 
 $$
-X[k] e^{j \frac{2\pi k n}{N}} + \overline{X[k]} e^{-j \frac{2\pi k n}{N}} = 2 \cdot \text{Re}(X[k] e^{j \frac{2\pi k n}{N}}).
+X[k] e^{j \frac{2\pi k n}{N}} + \overline{X[k]} e^{-j \frac{2\pi k n}{N}} = 2 \cdot \text{Re}(X[k] e^{j \frac{2\pi k n}{N}})
 $$
 
 Therefore, the final inverse transform formula is:
 
 $$
-x[n] = \frac{1}{N} \left( X[0] + \sum_{k=1}^{\frac{N}{2}-1} 2 \cdot \text{Re}(X[k] e^{j \frac{2\pi k n}{N}}) + X\left[\frac{N}{2}\right](-1)^n \right).
+x[n] = \frac{1}{N} \left( X[0] + \sum_{k=1}^{\frac{N}{2}-1} 2 \cdot \text{Re}(X[k] e^{j \frac{2\pi k n}{N}}) + X\left[\frac{N}{2}\right](-1)^n \right)
 $$
