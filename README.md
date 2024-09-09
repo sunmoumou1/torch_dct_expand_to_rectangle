@@ -255,9 +255,9 @@ $$
 Understanding this conclusion clarifies why the code operates as follows:
 
 ```python
-    V_t_r = X_v
-    # Note: here 't' stands for temporal
-    V_t_i = torch.cat([X_v[:, :1] * 0, -X_v.flip([1])[:, :-1]], dim=1)
+V_t_r = X_v
+# Note: here 't' stands for temporal
+V_t_i = torch.cat([X_v[:, :1] * 0, -X_v.flip([1])[:, :-1]], dim=1)
 ```
 
 Note: Since torch.fft.irfft only handles the first half of the frequency domain, this operation is actually valid.
@@ -280,7 +280,7 @@ $$
 X[N - k] = \overline{X[k]}.
 $$
 
-<span style="background:#fff88f">Conjugate symmetry implies that the first half of the frequency domain contains all the information, while the second half is a mirror image of the first half. This property allows us to compute only the first half of the frequency data (i.e., from \( k = 0 \) to \( \frac{N}{2} \)) and then use symmetry to reconstruct the complete signal.</span>
+<span style="background:#fff88f">Conjugate symmetry implies that the first half of the frequency domain contains all the information, while the second half is a mirror image of the first half. This property allows us to compute only the first half of the frequency data (i.e., from $k = 0$ to $\frac{N}{2}$) and then use symmetry to reconstruct the complete signal.</span>
 
 Using conjugate symmetry, the inverse Fourier transform formula can be split into the symmetric first half and the second half:
 
