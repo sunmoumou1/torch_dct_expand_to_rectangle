@@ -6,17 +6,17 @@
 
 # DCT Principle
 
-For a two-dimensional signal (such as an image) $f(x, y)$, its 2D DCT can be expressed as:
+For a two-dimensional signal (such as an image) $f(x, y)$, its 2D Discrete Cosine Transform (DCT) can be expressed as:
 
 $$
 F(u, v) = \alpha(u) \alpha(v) \sum_{x=0}^{N-1} \sum_{y=0}^{M-1} f(x, y) \cos\left[\frac{\pi(2x + 1)u}{2N}\right] \cos\left[\frac{\pi(2y + 1)v}{2M}\right]
 $$
 
-Where:
-- \( F(u, v) \) are the coefficients in the frequency domain (DCT coefficients).
-- \( f(x, y) \) is the signal in the spatial domain (e.g., image pixel values).
-- \( N \) and \( M \) are the width and height of the image, respectively.
-- \( \alpha(u) \) and \( \alpha(v) \) are normalization factors:
+where:
+- $F(u, v)$ are the DCT coefficients in the frequency domain.
+- $f(x, y)$ is the signal in the spatial domain (e.g., image pixel values).
+- $N$ and $M$ are the width and height of the image, respectively.
+- $\alpha(u)$ and $\alpha(v)$ are normalization factors defined as:
 
   $$
   \alpha(u) = 
@@ -26,7 +26,7 @@ Where:
   \end{cases}
   $$
 
-> DCT transforms the image from the spatial domain to the frequency domain. In the frequency representation, low-frequency components are concentrated in the top-left corner, while high-frequency components are distributed towards the bottom-right corner. A notable characteristic of DCT is its ability to concentrate most of the information in the low-frequency region, which is particularly useful in image compression.
+The DCT transforms the image from the spatial domain to the frequency domain. In the frequency representation, low-frequency components are concentrated in the top-left corner, while high-frequency components are distributed towards the bottom-right corner. A notable characteristic of DCT is its ability to concentrate most of the information in the low-frequency region, which is particularly useful in image compression.
 
 The Inverse Discrete Cosine Transform (IDCT) is the inverse operation of DCT and is used to convert the signal from the frequency domain back to the spatial domain. Its mathematical formula is as follows:
 
@@ -34,7 +34,7 @@ $$
 f(x, y) = \sum_{u=0}^{N-1} \sum_{v=0}^{M-1} \alpha(u) \alpha(v) F(u, v) \cos\left[\frac{\pi(2x + 1)u}{2N}\right] \cos\left[\frac{\pi(2y + 1)v}{2M}\right]
 $$
 
-The formula is very similar to DCT, but it operates on the frequency domain coefficients \( F(u, v) \), converting them back to the spatial domain signal \( f(x, y) \).
+The formula is very similar to DCT, but it operates on the frequency domain coefficients $F(u, v)$, converting them back to the spatial domain signal $f(x, y)$.
 
 ---
 
