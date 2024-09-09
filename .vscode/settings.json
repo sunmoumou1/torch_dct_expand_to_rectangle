@@ -1,7 +1,9 @@
 {
     "cSpell.words": [
+        "bmatrix",
         "idct",
         "IDCT",
+        "IDFT",
         "irfft"
     ]
 }
