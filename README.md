@@ -241,7 +241,7 @@ $$
 Since $x[n]$ is real, $\overline{x[n]} = x[n]$, and $\overline{e^{-j \frac{2\pi k n}{N}}} = e^{j \frac{2\pi k n}{N}}$, therefore:
 
 $$
-\overline{X[k]} = \sum_{n=0}^{N-1} x[n] e^{j \frac{2\pi k n}{N}}.
+\bar{X[k]} = \sum_{n=0}^{N-1} \bar{x[n]} \cdot \overline{e^{-j \frac{2\pi k n}{N}}}.
 $$
 
 Comparing $X[N - k]$ and $\overline{X[k]}$ yields:
@@ -274,7 +274,7 @@ $$
 x[n] = \frac{1}{N} \sum_{k=0}^{N-1} X[k] e^{j \frac{2\pi k n}{N}},
 $$
 
-For a real sequence \( x[n] \), its discrete Fourier transform \( X[k] \) satisfies the following conjugate symmetry:
+For a real sequence $x[n]$, its discrete Fourier transform $X[k]$ satisfies the following conjugate symmetry:
 
 $$
 X[N - k] = \overline{X[k]}.
@@ -309,8 +309,9 @@ $$
 Substituting the above expression into the original formula:
 
 $$
-x[n] = \frac{1}{N} \left( X[0] + X\left[\frac{N}{2}\right](-1)^n + \sum_{k=1}^{\frac{N}{2}-1} \left(X[k] e^{j \frac{2\pi k n}{N}} + \overline{X[k]} e^{-j \frac{2\pi k n}{N}}\right) \right)
+x[n] = \frac{1}{N} \left( X[0] + X\left(\frac{N}{2}\right)(-1)^n + \sum_{k=1}^{\frac{N}{2}-1} \left(X[k] e^{j \frac{2\pi k n}{N}} + \overline{X[k]} e^{-j \frac{2\pi k n}{N}}\right) \right)
 $$
+
 
 Notice that $X[k] e^{j \frac{2\pi k n}{N}} + \overline{X[k]} e^{-j \frac{2\pi k n}{N}}$ is in real form:
 
