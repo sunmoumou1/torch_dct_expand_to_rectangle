@@ -6,7 +6,7 @@
 
 # DCT Principle
 
-For a two-dimensional signal (such as an image) \( f(x, y) \), its 2D DCT can be expressed as:
+For a two-dimensional signal (such as an image) $f(x, y)$, its 2D DCT can be expressed as:
 
 $$
 F(u, v) = \alpha(u) \alpha(v) \sum_{x=0}^{N-1} \sum_{y=0}^{M-1} f(x, y) \cos\left[\frac{\pi(2x + 1)u}{2N}\right] \cos\left[\frac{\pi(2y + 1)v}{2M}\right]
