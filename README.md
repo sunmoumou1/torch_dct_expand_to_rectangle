@@ -184,7 +184,7 @@ $$
 
 
 # Using the DCT Matrix to Perform 2D Discrete Cosine Transform
-![[./images/illustration.png]]
+![illustration.png](./images/illustration.png)
 
 # Inverse DCT Transform
 
