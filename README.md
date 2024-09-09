@@ -18,13 +18,13 @@ where:
 - $N$ and $M$ are the width and height of the image, respectively.
 - $\alpha(u)$ and $\alpha(v)$ are normalization factors defined as:
 
-  $$
-  \alpha(u) = 
-  \begin{cases}
-  \sqrt{\frac{1}{N}}, & \text{if } u = 0 \\
-  \sqrt{\frac{2}{N}}, & \text{if } u > 0
-  \end{cases}
-  $$
+$$
+\alpha(u) = 
+\begin{cases}
+\sqrt{\frac{1}{N}}, & \text{if } u = 0 \\
+\sqrt{\frac{2}{N}}, & \text{if } u > 0
+\end{cases}
+$$
 
 The DCT transforms the image from the spatial domain to the frequency domain. In the frequency representation, low-frequency components are concentrated in the top-left corner, while high-frequency components are distributed towards the bottom-right corner. A notable characteristic of DCT is its ability to concentrate most of the information in the low-frequency region, which is particularly useful in image compression.
 
