@@ -177,7 +177,7 @@ D = \sqrt{\frac{2}{4}} \begin{bmatrix}
 \end{bmatrix}
 $$
 
-Applying DCT function to a $4 \times 4$ identity matrix results in a DCT matrix $D$. We construct this matrix row by row according to the DCT definition.
+Applying DCT function to a $4 \times 4$ identity matrix results in a DCT matrix $D$ like above. We construct this matrix row by row according to the DCT definition.
 
 For a 1D signal $x$ of length $N$, the $k$-th DCT coefficient is defined as:
 
