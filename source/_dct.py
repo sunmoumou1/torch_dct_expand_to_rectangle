@@ -52,6 +52,7 @@ def dct(x, norm=None):
     v = torch.cat([x[:, ::2], x[:, 1::2].flip([1])], dim=1)
 
     Vc = torch.view_as_real(torch.fft.fft(v, dim=1))
+    # c表示complicated
 
     k = -torch.arange(N, dtype=x.dtype, device=x.device)[None, :] * np.pi / (2 * N)
     W_r = torch.cos(k)

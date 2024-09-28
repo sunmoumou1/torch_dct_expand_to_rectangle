@@ -39,95 +39,128 @@ The formula is very similar to DCT, but it operates on the frequency domain coef
 ---
 
 # Fast Calculation of 1D DCT Frequency Coefficients via FFT
+Here's the translated content in English along with the markdown format you requested:
 
-To convert DCT using FFT, we first perform symmetry operations on the signal. The key is to rearrange the signal's odd and even components to form a special symmetric signal.
+---
 
-Let the input signal $x$ have a length of $N$. We rearrange and flip the signal to form a new signal $v$, also of length $N$, defined as follows:
+Before diving into DCT transformation, let’s first take a look at the DFT transformation formula:
 
-$$
-v = [x_0, x_2, \ldots, x_{N-2}, x_{N-1}, x_{N-3}, \ldots, x_1]
-$$
-
-Where:
-
-- $[x_0, x_2, \ldots, x_{N-2}]$ are the elements at even indices of the signal.
-- $[x_{N-1}, x_{N-3}, \ldots, x_1]$ are the reversed elements at odd indices of the signal.
-
-This rearrangement symmetrically structures the original signal to create components that correspond to the cosine elements in Fourier transforms (<span style="background:#fff88f">Don't be worry, I will show this later!</span>).
-
-FFT (Fast Fourier Transform) is a fast algorithm for computing the Discrete Fourier Transform (DFT), given by:
-
-$$
-V_k = \sum_{n=0}^{N-1} v_n e^{-i \frac{2\pi nk}{N}}, \quad k = 0, 1, \ldots, N-1
+$$ 
+X\left\lbrack k \right\rbrack = \sum_{n = 0}^{N - 1}{x\left\lbrack n \right\rbrack}\left( \cos\left( \frac{2\text{πkn}}{N} \right) - \text{jsin}\left( \frac{2\text{πkn}}{N} \right) \right)\ 
 $$
 
-Using Euler's formula $e^{-i\theta} = \cos(\theta) - i\sin(\theta)$, the formula can be decomposed into:
+Of course, we can split the above equation into:
 
 $$
-V_k = \sum_{n=0}^{N-1} v_n \left[\cos\left(\frac{2\pi nk}{N}\right) - i\sin\left(\frac{2\pi nk}{N}\right)\right]
+X[k] = \sum_{n = 0}^{N - 1}{x[n]}(\cos \frac{2\text{πkn}}{N} ) -j \sum_{n = 0}^{N - 1}{x[n]}{sin}( \frac{2{πkn}}{N})
 $$
 
-The FFT result is a complex number containing a real part (cosine term) and an imaginary part (sine term).
+Clearly, the real part is handled by $\sum_{n = 0}^{N - 1}{x[n]}(\cos \frac{2\text{πkn}}{N})$, and the imaginary part is handled by $j \sum_{n = 0}^{N - 1}{x[n]}{sin}( \frac{2{πkn}}{N})$. Let’s define $cos (\frac{2\text{πkn}}{N}) = cos(kt)$, so we can summarize the equation as follows:
 
-**Real Part:**
+Real part:
 
-$$
-\text{Re}(V_k) = \sum_{n=0}^{N-1} v_n \cos\left(\frac{2\pi nk}{N}\right)
-$$
+$Re[k]=\sum_{n = 0}^{N - 1}{x[n]}cos(kt)$
 
-**Imaginary Part:**
+Imaginary part:
 
-$$
-\text{Im}(V_k) = -\sum_{n=0}^{N-1} v_n \sin\left(\frac{2\pi nk}{N}\right)
-$$
+$Im[k]=- \sum_{n = 0}^{N - 1}{x[n]}sin(kt)$
 
-----
+Obviously, since cosine is an even function and sine is an odd function, we get:
 
-A crucial part of understanding this function lies in the following lines of code:
+When $x[n]$ is a real function, its real part in the frequency domain is an even function, while its imaginary part is an odd function.
 
-```python
-    k = -torch.arange(N, dtype=x.dtype, device=x.device)[None, :] * np.pi / (2 * N)
-    W_r = torch.cos(k)
-    W_i = torch.sin(k)
+---
 
-    V = Vc[:, :, 0] * W_r - Vc[:, :, 1] * W_i
-```
+Now, what happens if the original signal $x[n]$ is a real and even function? Clearly, since an even function multiplied by an even function is still an even function, and an odd function multiplied by an even function is still odd, we get:
 
-According to the definition: DCT is a transformation that converts the input signal into cosine basis frequency components, mathematically defined as:
+$x[n]sin(kt)$ becomes an odd function. Since it’s an odd function, naturally:
+
+$Im[k]=-\sum_{n = 0}^{N - 1}{x[n]}sin(kt)=0$
+
+As you can see, after the transformation, the imaginary part vanishes. Therefore, when the original time-domain signal is a real and even signal, we can rewrite the DFT as:
 
 $$
-V_k = \sum_{n=0}^{N-1} x_n \cos\left(\frac{\pi (2n + 1) k}{2N}\right), \quad k = 0, 1, \ldots, N-1
+X[k] = \sum_{n = 0}^{N - 1}{x[n]}(\cos \frac{2\text{πkn}}{N} ) 
 $$
 
-__Statement__:
+In fact, this is the core idea behind the DCT transformation. It’s quite simple, right? The DCT transformation is essentially a constrained form of the DFT transformation, and it’s not because the transformation method itself is different.
+
+But this isn’t quite enough yet. You might notice that this still looks a bit different from the DCT formula you see in textbooks. Let’s take a look at the most commonly used DCT transformation formula:
 
 $$
-V_k = \text{Vc[:, :, 0]} \cdot W_r - \text{Vc[:, :, 1]} \cdot W_i
+F(u)=c(u)\sum_{x=0}^{N-1}{f(x)cos\left[\frac{(x+0.5)\pi}{N}u\right]}
 $$
 
-__Proof__: The right side of the equation equals:
+Where, when $u=0$:
 
 $$
-= \sum_{n=0}^{N-1} x_n \cos\left(\frac{2\pi nk}{2N}\right) \cos\left(-\frac{k\pi}{2N}\right) - \left(-\sum_{n=0}^{N-1} x_n \sin\left(\frac{2\pi nk}{2N}\right)\right) \sin\left(-\frac{\pi k}{2N}\right)
+c(0)=\sqrt{\frac{1}{N}}
 $$
 
-$$
-= \sum_{n=0}^{N-1} x_n \left[\cos\left(\frac{2\pi nk}{2N}\right) \cos\left(-\frac{k\pi}{2N}\right) + \sin\left(\frac{2\pi nk}{2N}\right) \sin\left(-\frac{\pi k}{2N}\right)\right]
-$$
-
-Using the formulas:
+Otherwise:
 
 $$
-\cos(\alpha + \beta) = \cos\alpha \cos\beta - \sin\alpha \sin\beta
+c(u)=\sqrt{\frac{2}{N}}
+$$
+
+If this is the first time you’ve seen the DCT transformation, or if you only know that DCT looks like this without understanding why, you might be a bit confused. What’s going on here? We said that DCT is just a DFT transformation of a real and even input signal, right? Don’t worry, since we’re here, let me explain it in detail.
+
+First of all, we need to reiterate that DCT is indeed a special case of the DFT transformation. That’s correct. The special part lies in the fact that the original signal is a real and even function. However, in real-world applications, we rarely have perfectly real and even signals to work with. So, to make it more broadly applicable, we construct an even signal from a real signal if the natural signal isn’t already even.
+
+Given a discrete real signal of length $N$, $\{x[0], x[1], \dots, x[N-1]\}$, we first extend its length to twice the original, making it $2N$. We define the new signal $x^{'}[m]$ as:
+
+$$
+x^{'}[m]=x[m] \quad (0\leq m \leq N-1)
 $$
 
 $$
-\cos(\alpha - \beta) = \cos \alpha \cos\beta + \sin\alpha \sin\beta
+x^{'}[m]=x[-m-1] \quad (-N\leq m \leq -1)
 $$
 
+Simply put, the signal becomes as shown in the following figure:
+  
+The blue line represents the original signal, and the red line represents the extended signal.
+
+This way, we’ve transformed a real signal into a real and even signal. Now, how do we write the DFT transformation for this extended signal? Clearly, the signal’s interval has now changed from $[0, N-1]$ to $[-N, N-1]$, so the DFT formula becomes:
+
 $$
-= \sum_{n=0}^{N-1} x_n \cos\left(\frac{\pi (2n + 1) k}{2N}\right)
+X[k]=\sum_{m=-N}^{N-1}{x^{'}[m]e^{\frac{-j2\pi mk}{2N}}} \quad \text{(Note that the length of the extended signal is now 2N)}
 $$
+
+However, extending the signal in this way introduces a problem: this signal is not symmetric around $m=0$, but around $m=-\frac{1}{2}$. Therefore, to make the signal symmetric about the origin, it’s a good idea to shift the entire extended signal by $\frac{1}{2}$ units to the right:
+
+$$
+X[k]=\sum_{m=-N+\frac{1}{2}}^{N-\frac{1}{2}}{x^{'}[m-\frac{1}{2}]e^{\frac{-j2\pi mk}{2N}}}
+$$
+
+Using Euler's formula and expanding the above equation, we only need the real part, as we have already discussed that the imaginary part becomes zero:
+
+$$
+X[k]=\sum_{m=-N+\frac{1}{2}}^{N-\frac{1}{2}}{x^{'}[m-\frac{1}{2}]cos\left(\frac{2\pi mk}{2N}\right)}
+$$
+
+At this point, it’s still not ideal, as $m$ turns out to be a fraction and can even be negative. As a discrete sequence, how can we find such values? Therefore, we need to further modify equation 1.5. Since we know that the sequence is an even-symmetric sequence, we can modify it as follows:
+
+$$
+\sum_{m=-N+\frac{1}{2}}^{N-\frac{1}{2}}{x^{'}[m-\frac{1}{2}]cos\left(\frac{2\pi mk}{2N}\right)} = 2*\sum_{m=\frac{1}{2}}^{N-\frac{1}{2}}{x^{'}[m-\frac{1}{2}]cos\left(\frac{2\pi mk}{2N}\right)}
+$$
+
+Next, let $n=m-\frac{1}{2}$ and substitute $n$ into the above equation:
+
+$$
+2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{2\pi (n+\frac{1}{2})k}{2N}\right)}=2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{(n+\frac{1}{2}) \pi k}{N}\right)} \quad \text{(Equation 1.7)}
+$$
+
+Now, we are very close to the standard DCT formula. The remaining issue is: what is that $c(u)$ term in the standard formula?
+
+In fact, this $c(u)$ term is not strictly necessary in the computation. In DFT transformation, this value also exists but is often omitted because it’s commonly set to 1. However, in some engineering applications, this value is often set to $\frac{1}{N}$ or $\sqrt{\frac{1}{N}}$.
+
+In the case of DCT, this term appears mainly to orthogonalize the matrix when the DCT transformation is represented in matrix form, making further computation easier. In this case, the coefficient should be set to $\sqrt{\frac{1}{2N}}$ (except when $k=0$, which requires separate consideration; for a detailed derivation, refer to the reference).
+
+Multiplying this coefficient into the above equation:
+
+$$
+\sqrt{\frac{1}{2N}}*2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{(n+\frac{1}{2}) \pi k}{N}\right)}=\sqrt{\frac{2}{N}}*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{(n+\frac{1}{2}) \pi k}{N}\
 
 # Generating the DCT Matrix
 
