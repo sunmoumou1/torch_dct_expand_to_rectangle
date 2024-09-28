@@ -157,7 +157,7 @@ Now, we are very close to the standard DCT formula. The remaining issue is: what
 
 In the case of DCT, this term appears mainly to orthogonalize the matrix when the DCT transformation is represented in matrix form, making further computation easier. In this case, the coefficient should be set to $\sqrt{\frac{1}{2N}}$ (except when $k=0$, which requires separate consideration; for a detailed derivation, refer to the reference).
 
-Multiplying this coefficient into the above equation:
+Multiplying this coefficient into the above equation: $\sqrt{\frac{2}{N}}*\sum_{n=0}^{N-1}{x^{'}[n]cos({\frac{(n+\frac{1}{2}) \pi k}{N}})}$
 
 $$
 \sqrt{\frac{1}{2N}}*2*\sum_{n=0}^{N-1}{x^{'}[n]cos({\frac{(n+\frac{1}{2}) \pi k}{N}})}=\sqrt{\frac{2}{N}}*\sum_{n=0}^{N-1}{x^{'}[n]cos({\frac{(n+\frac{1}{2}) \pi k}{N}})}
