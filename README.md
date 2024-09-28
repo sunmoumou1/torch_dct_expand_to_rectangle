@@ -81,6 +81,8 @@ $$
 \text{Im}(X_k) = -\sum_{n=0}^{N-1} x_n \sin\left(\frac{2\pi nk}{N}\right)
 $$
 
+----
+
 A crucial part of understanding this function lies in the following lines of code:
 
 ```python
