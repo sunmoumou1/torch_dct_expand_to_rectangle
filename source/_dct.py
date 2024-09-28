@@ -3,7 +3,8 @@ import torch.nn as nn
 import numpy as np
 
 class LinearDCT(nn.Linear):
-    """Implements DCT as a linear layer that can handle 2D fields with unequal height and width.
+    """
+    Implements DCT as a linear layer that can handle 2D fields with unequal height and width.
     :param in_features: Input feature dimension
     :param type: Type of DCT used, such as 'dct', 'idct', etc.
     :param norm: Normalization parameter
@@ -35,7 +36,7 @@ def apply_linear_2d(x, linear_layer_h, linear_layer_w):
 
     X1 = linear_layer_w(x)  
     X2 = linear_layer_h(X1.transpose(-1, -2)) 
-    return X2.transpose(-1, -2)
+    return X2.transpose(-1, -2).continuous()
 
 
 def dct(x, norm=None):
