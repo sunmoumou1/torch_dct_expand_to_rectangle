@@ -274,7 +274,7 @@ $$
 Since $x[n]$ is real, $\overline{x[n]} = x[n]$, and $\overline{e^{-j \frac{2\pi k n}{N}}} = e^{j \frac{2\pi k n}{N}}$, therefore:
 
 $$
-\bar{X[k]} = \sum_{n=0}^{N-1} \bar{x[n]} \cdot \overline{e^{-j \frac{2\pi k n}{N}}}.
+\bar{X[k]} = \sum_{n=0}^{N-1} x[n] \cdot \overline{e^{-j \frac{2\pi k n}{N}}}.
 $$
 
 Comparing $X[N - k]$ and $\overline{X[k]}$ yields:

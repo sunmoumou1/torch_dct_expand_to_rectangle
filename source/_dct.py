@@ -80,7 +80,7 @@ def idct(X, norm=None):
     x_shape = X.shape
     N = x_shape[-1]
 
-    X_v = X.contiguous().view(-1, x_shape[-1]) / 2
+    X_v = X.contiguous().view(-1, N) / 2
 
     if norm == 'ortho':
         X_v[:, 0] *= np.sqrt(N) * 2
