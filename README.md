@@ -53,7 +53,7 @@ Where:
 - $[x_0, x_2, \ldots, x_{N-2}]$ are the elements at even indices of the signal.
 - $[x_{N-1}, x_{N-3}, \ldots, x_1]$ are the reversed elements at odd indices of the signal.
 
-This rearrangement symmetrically structures the original signal to create components that correspond to the cosine elements in Fourier transforms (==Don't be worry, I will show this later!==).
+This rearrangement symmetrically structures the original signal to create components that correspond to the cosine elements in Fourier transforms (<span style="background:#fff88f">Don't be worry, I will show this later!</span>).
 
 FFT (Fast Fourier Transform) is a fast algorithm for computing the Discrete Fourier Transform (DFT), given by:
 
