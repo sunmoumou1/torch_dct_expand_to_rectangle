@@ -160,7 +160,7 @@ In the case of DCT, this term appears mainly to orthogonalize the matrix when th
 Multiplying this coefficient into the above equation:
 
 $$
-\sqrt{\frac{1}{2N}}*2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{(n+\frac{1}{2}) \pi k}{N}\right)}=\sqrt{\frac{2}{N}}*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{(n+\frac{1}{2}) \pi k}{N}
+\sqrt{\frac{1}{2N}}*2*\sum_{n=0}^{N-1}{x^{'}[n]cos({\frac{(n+\frac{1}{2}) \pi k}{N}})}=\sqrt{\frac{2}{N}}*\sum_{n=0}^{N-1}{x^{'}[n]cos({\frac{(n+\frac{1}{2}) \pi k}{N}})}
 $$
 
 # Generating the DCT Matrix
