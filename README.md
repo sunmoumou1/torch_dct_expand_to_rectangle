@@ -39,14 +39,12 @@ The formula is very similar to DCT, but it operates on the frequency domain coef
 ---
 
 # Fast Calculation of 1D DCT Frequency Coefficients via FFT
-Here's the translated content in English along with the markdown format you requested:
 
----
 
 Before diving into DCT transformation, let’s first take a look at the DFT transformation formula:
 
 $$ 
-X\left\lbrack k \right\rbrack = \sum_{n = 0}^{N - 1}{x\left\lbrack n \right\rbrack}\left( \cos\left( \frac{2\text{πkn}}{N} \right) - \text{jsin}\left( \frac{2\text{πkn}}{N} \right) \right)\ 
+X\left\lbrack k \right\rbrack = \sum_{n = 0}^{N - 1}{x\left\lbrack n \right\rbrack}\left( \cos\left( \frac{2\text{πkn}}{N} \right) - j\sin \left( \frac{2\text{πkn}}{N} \right) \right)\ 
 $$
 
 Of course, we can split the above equation into:
