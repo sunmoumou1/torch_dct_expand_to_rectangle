@@ -115,8 +115,10 @@ $$
 x^{'}[m]=x[-m-1] \quad (-N\leq m \leq -1)
 $$
 
-Simply put, the signal becomes as shown in the following figure:
-  
+Simply speaking, the signal becomes as shown in the following figure:
+
+![1.png](./images/1.png)
+
 The blue line represents the original signal, and the red line represents the extended signal.
 
 This way, we’ve transformed a real signal into a real and even signal. Now, how do we write the DFT transformation for this extended signal? Clearly, the signal’s interval has now changed from $[0, N-1]$ to $[-N, N-1]$, so the DFT formula becomes:
@@ -126,6 +128,8 @@ X[k]=\sum_{m=-N}^{N-1}{x^{'}[m]e^{\frac{-j2\pi mk}{2N}}} \quad \text{(Note that 
 $$
 
 However, extending the signal in this way introduces a problem: this signal is not symmetric around $m=0$, but around $m=-\frac{1}{2}$. Therefore, to make the signal symmetric about the origin, it’s a good idea to shift the entire extended signal by $\frac{1}{2}$ units to the right:
+
+![2.png](./images/2.png)
 
 $$
 X[k]=\sum_{m=-N+\frac{1}{2}}^{N-\frac{1}{2}}{x^{'}[m-\frac{1}{2}]e^{\frac{-j2\pi mk}{2N}}}
