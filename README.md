@@ -155,8 +155,6 @@ $$
 
 Now, we are very close to the standard DCT formula. The remaining issue is: what is that $c(u)$ term in the standard formula?
 
-In fact, this $c(u)$ term is not strictly necessary in the computation. In DFT transformation, this value also exists but is often omitted because it’s commonly set to 1. However, in some engineering applications, this value is often set to $\frac{1}{N}$ or $\sqrt{\frac{1}{N}}$.
-
 In the case of DCT, this term appears mainly to orthogonalize the matrix when the DCT transformation is represented in matrix form, making further computation easier. In this case, the coefficient should be set to $\sqrt{\frac{1}{2N}}$ (except when $k=0$, which requires separate consideration; for a detailed derivation, refer to the reference).
 
 Multiplying this coefficient into the above equation:
