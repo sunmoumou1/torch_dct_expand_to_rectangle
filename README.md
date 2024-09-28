@@ -55,17 +55,13 @@ $$
 
 Clearly, the real part is handled by $\sum_{n = 0}^{N - 1}{x[n]}(\cos \frac{2\text{πkn}}{N})$, and the imaginary part is handled by $j \sum_{n = 0}^{N - 1}{x[n]}{sin}( \frac{2{πkn}}{N})$. Let’s define $cos (\frac{2\text{πkn}}{N}) = cos(kt)$, so we can summarize the equation as follows:
 
-Real part:
+- Real part: $Re[k]=\sum_{n = 0}^{N - 1}{x[n]}cos(kt)$
 
-$Re[k]=\sum_{n = 0}^{N - 1}{x[n]}cos(kt)$
-
-Imaginary part:
-
-$Im[k]=- \sum_{n = 0}^{N - 1}{x[n]}sin(kt)$
+- Imaginary part: $Im[k]=- \sum_{n = 0}^{N - 1}{x[n]}sin(kt)$
 
 Obviously, since cosine is an even function and sine is an odd function, we get:
 
-When $x[n]$ is a real function, its real part in the frequency domain is an even function, while its imaginary part is an odd function.
+> When $x[n]$ is a real function, its real part in the frequency domain is an even function, while its imaginary part is an odd function.
 
 ---
 
