@@ -42,7 +42,7 @@ The formula is very similar to DCT, but it operates on the frequency domain coef
 
 To convert DCT using FFT, we first perform symmetry operations on the signal. The key is to rearrange the signal's odd and even components to form a special symmetric signal.
 
-Let the input signal $x_n$ have a length of $N$. We rearrange and flip the signal to form a new signal $v_n$, also of length $N$, defined as follows:
+Let the input signal $x$ have a length of $N$. We rearrange and flip the signal to form a new signal $v$, also of length $N$, defined as follows:
 
 $$
 v = [x_0, x_2, \ldots, x_{N-2}, x_{N-1}, x_{N-3}, \ldots, x_1]
@@ -53,7 +53,7 @@ Where:
 - $[x_0, x_2, \ldots, x_{N-2}]$ are the elements at even indices of the signal.
 - $[x_{N-1}, x_{N-3}, \ldots, x_1]$ are the reversed elements at odd indices of the signal.
 
-This rearrangement symmetrically structures the original signal to create components that correspond to the cosine elements in Fourier transforms (I will show this later!).
+This rearrangement symmetrically structures the original signal to create components that correspond to the cosine elements in Fourier transforms (==Don't be worry, I will show this later!==).
 
 FFT (Fast Fourier Transform) is a fast algorithm for computing the Discrete Fourier Transform (DFT), given by:
 
