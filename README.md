@@ -58,13 +58,13 @@ This rearrangement symmetrically structures the original signal to create compon
 FFT (Fast Fourier Transform) is a fast algorithm for computing the Discrete Fourier Transform (DFT), given by:
 
 $$
-X_k = \sum_{n=0}^{N-1} x_n e^{-i \frac{2\pi nk}{N}}, \quad k = 0, 1, \ldots, N-1
+V_k = \sum_{n=0}^{N-1} v_n e^{-i \frac{2\pi nk}{N}}, \quad k = 0, 1, \ldots, N-1
 $$
 
 Using Euler's formula $e^{-i\theta} = \cos(\theta) - i\sin(\theta)$, the formula can be decomposed into:
 
 $$
-X_k = \sum_{n=0}^{N-1} x_n \left[\cos\left(\frac{2\pi nk}{N}\right) - i\sin\left(\frac{2\pi nk}{N}\right)\right]
+V_k = \sum_{n=0}^{N-1} v_n \left[\cos\left(\frac{2\pi nk}{N}\right) - i\sin\left(\frac{2\pi nk}{N}\right)\right]
 $$
 
 The FFT result is a complex number containing a real part (cosine term) and an imaginary part (sine term).
@@ -72,13 +72,13 @@ The FFT result is a complex number containing a real part (cosine term) and an i
 **Real Part:**
 
 $$
-\text{Re}(X_k) = \sum_{n=0}^{N-1} x_n \cos\left(\frac{2\pi nk}{N}\right)
+\text{Re}(V_k) = \sum_{n=0}^{N-1} v_n \cos\left(\frac{2\pi nk}{N}\right)
 $$
 
 **Imaginary Part:**
 
 $$
-\text{Im}(X_k) = -\sum_{n=0}^{N-1} x_n \sin\left(\frac{2\pi nk}{N}\right)
+\text{Im}(V_k) = -\sum_{n=0}^{N-1} v_n \sin\left(\frac{2\pi nk}{N}\right)
 $$
 
 ----
@@ -102,7 +102,7 @@ $$
 __Statement__:
 
 $$
-V_k = \text{Re}(X_k) \cdot W_r - \text{Im}(X_k) \cdot W_i
+V_k = \text{Vc[:, :, 0]} \cdot W_r - \text{Vc[:, :, 1]} \cdot W_i
 $$
 
 __Proof__: The right side of the equation equals:
