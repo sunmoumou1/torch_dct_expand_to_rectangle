@@ -150,7 +150,7 @@ $$
 Next, let $n=m-\frac{1}{2}$ and substitute $n$ into the above equation:
 
 $$
-2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{2\pi (n+\frac{1}{2})k}{2N}\right)}=2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{(n+\frac{1}{2}) \pi k}{N}\right)} \quad}
+2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{2\pi (n+\frac{1}{2})k}{2N}\right)}=2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{(n+\frac{1}{2}) \pi k}{N}\right)} \quad 
 $$
 
 Now, we are very close to the standard DCT formula. The remaining issue is: what is that $c(u)$ term in the standard formula?
