@@ -101,7 +101,7 @@ $$
 c(u)=\sqrt{\frac{2}{N}}
 $$
 
-If this is the first time you’ve seen the DCT transformation, or if you only know that DCT looks like this without understanding why, you might be a bit confused. What’s going on here? We said that DCT is just a DFT transformation of a real and even input signal, right? Don’t worry, since we’re here, let me explain it in detail.
+If this is the first time you’ve seen the DCT transformation, you might be a bit confused. What’s going on here? We said that DCT is just a DFT transformation of a real and even input signal, right? Don’t worry, let me explain it in detail.
 
 First of all, we need to reiterate that DCT is indeed a special case of the DFT transformation. That’s correct. The special part lies in the fact that the original signal is a real and even function. However, in real-world applications, we rarely have perfectly real and even signals to work with. So, to make it more broadly applicable, we construct an even signal from a real signal if the natural signal isn’t already even.
 
