@@ -79,7 +79,11 @@ $$
 
 In fact, this is the core idea behind the DCT transformation. It’s quite simple, right? The DCT transformation is essentially a constrained form of the DFT transformation, and it’s not because the transformation method itself is different.
 
-But this isn’t quite enough yet. You might notice that this still looks a bit different from the DCT formula you see in textbooks. Let’s take a look at the most commonly used DCT transformation formula:
+---
+
+__But this isn’t quite enough yet!__
+
+ You might notice that this still looks a bit different from the DCT formula you see in textbooks. Let’s take a look at the most commonly used DCT transformation formula:
 
 $$
 F(u)=c(u)\sum_{x=0}^{N-1}{f(x)cos\left[\frac{(x+0.5)\pi}{N}u\right]}
