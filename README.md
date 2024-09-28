@@ -141,7 +141,7 @@ $$
 X[k]=\sum_{m=-N+\frac{1}{2}}^{N-\frac{1}{2}}{x^{'}[m-\frac{1}{2}]cos\left(\frac{2\pi mk}{2N}\right)}
 $$
 
-At this point, it’s still not ideal, as $m$ turns out to be a fraction and can even be negative. As a discrete sequence, how can we find such values? Therefore, we need to further modify equation 1.5. Since we know that the sequence is an even-symmetric sequence, we can modify it as follows:
+At this point, it’s still not ideal, as $m$ turns out to be a fraction and can even be negative. Therefore, we need to further modify equation. Since we know that the sequence is an even-symmetric sequence, we can modify it as follows:
 
 $$
 \sum_{m=-N+\frac{1}{2}}^{N-\frac{1}{2}}{x^{'}[m-\frac{1}{2}]cos\left(\frac{2\pi mk}{2N}\right)} = 2*\sum_{m=\frac{1}{2}}^{N-\frac{1}{2}}{x^{'}[m-\frac{1}{2}]cos\left(\frac{2\pi mk}{2N}\right)}
@@ -150,7 +150,7 @@ $$
 Next, let $n=m-\frac{1}{2}$ and substitute $n$ into the above equation:
 
 $$
-2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{2\pi (n+\frac{1}{2})k}{2N}\right)}=2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{(n+\frac{1}{2}) \pi k}{N}\right)} \quad \text{(Equation 1.7)}
+2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{2\pi (n+\frac{1}{2})k}{2N}\right)}=2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{(n+\frac{1}{2}) \pi k}{N}\right)} \quad}
 $$
 
 Now, we are very close to the standard DCT formula. The remaining issue is: what is that $c(u)$ term in the standard formula?
