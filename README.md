@@ -342,7 +342,7 @@ $$
 Substituting the above expression into the original formula:
 
 $$
-x[n] = \frac{1}{N} \left( X[0] + X\left(\frac{N}{2}\right)(-1)^n + \sum_{k=1}^{\frac{N}{2}-1} \left(X[k] e^{j \frac{2\pi k n}{N}} + \overline{X[k]} e^{-j \frac{2\pi k n}{N}}\right) \right)
+x[n] = \frac{1}{N} \left( X[0] + X\left[\frac{N}{2}\right](-1)^n + \sum_{k=1}^{\frac{N}{2}-1} \left(X[k] e^{j \frac{2\pi k n}{N}} + \overline{X[k]} e^{-j \frac{2\pi k n}{N}}\right) \right)
 $$
 
 
@@ -355,5 +355,5 @@ $$
 Therefore, the final inverse transform formula is:
 
 $$
-x[n] = \frac{1}{N} \left( X[0] + \sum_{k=1}^{\frac{N}{2}-1} 2 \cdot \text{Re}\left(X[k] e^{j \frac{2\pi k n}{N}}\right) + X\left(\frac{N}{2}\right)(-1)^n \right)
+x[n] = \frac{1}{N} \left( X[0] + \sum_{k=1}^{\frac{N}{2}-1} 2 \cdot \text{Re}\left(X[k] e^{j \frac{2\pi k n}{N}}\right) + X\left[\frac{N}{2}\right] (-1)^n \right)
 $$
