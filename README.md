@@ -65,11 +65,11 @@ Obviously, since cosine is an even function and sine is an odd function, we get:
 
 ---
 
-Now, what happens if the original signal $x[n]$ is a real and even function? Clearly, since an even function multiplied by an even function is still an even function, and an odd function multiplied by an even function is still odd, we get:
+Now, what happens if the original signal $x[n]$ is a real and even function? Clearly, since an even function multiplied by an even function is still an even function, and an odd function multiplied by an even function is still odd, we get: $x[n]sin(kt)$ becomes an odd function. Since it’s an odd function, naturally:
 
-$x[n]sin(kt)$ becomes an odd function. Since it’s an odd function, naturally:
-
-$Im[k]=-\sum_{n = 0}^{N - 1}{x[n]}sin(kt)=0$
+$$
+Im[k]=-\sum_{n = 0}^{N - 1}{x[n]}sin(kt)=0
+$$
 
 As you can see, after the transformation, the imaginary part vanishes. Therefore, when the original time-domain signal is a real and even signal, we can rewrite the DFT as:
 
