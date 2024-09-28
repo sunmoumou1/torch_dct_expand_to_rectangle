@@ -50,7 +50,7 @@ $$
 Of course, we can split the above equation into:
 
 $$
-X[k] = \sum_{n = 0}^{N - 1}{x[n]}(\cos \frac{2\text{πkn}}{N} ) -j \sum_{n = 0}^{N - 1}{x[n]}{sin}( \frac{2{πkn}}{N})
+X[k] = \sum_{n = 0}^{N - 1}{x[n]}\cos ( \frac{2\text{πkn}}{N} ) -j \sum_{n = 0}^{N - 1}{x[n]}{sin}( \frac{2{πkn}}{N})
 $$
 
 Clearly, the real part is handled by $\sum_{n = 0}^{N - 1}{x[n]}(\cos \frac{2\text{πkn}}{N})$, and the imaginary part is handled by $j \sum_{n = 0}^{N - 1}{x[n]}{sin}( \frac{2{πkn}}{N})$. Let’s define $cos (\frac{2\text{πkn}}{N}) = cos(kt)$, so we can summarize the equation as follows:
