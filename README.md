@@ -39,8 +39,6 @@ $$
 f(x, y) = \sum_{u=0}^{N-1} \sum_{v=0}^{M-1} \alpha(u) \alpha(v) F(u, v) \cos\left[\frac{\pi(2x + 1)u}{2N}\right] \cos\left[\frac{\pi(2y + 1)v}{2M}\right]
 $$
 
-The formula is very similar to DCT, but it operates on the frequency domain coefficients $F(u, v)$, converting them back to the spatial domain signal $f(x, y)$.
-
 ---
 
 # Fast Calculation of 1D DCT Frequency Coefficients via FFT
@@ -58,7 +56,7 @@ $$
 X[k] = \sum_{n = 0}^{N - 1}{x[n]}\cos ( \frac{2\text{πkn}}{N} ) -j \sum_{n = 0}^{N - 1}{x[n]}{sin}( \frac{2{πkn}}{N})
 $$
 
-Clearly, the real part is handled by $\sum_{n = 0}^{N - 1}{x[n]}(\cos \frac{2\text{πkn}}{N})$, and the imaginary part is handled by $j \sum_{n = 0}^{N - 1}{x[n]}{sin}( \frac{2{πkn}}{N})$. Let’s define $cos (\frac{2\text{πkn}}{N}) = cos(kt)$, so we can summarize the equation as follows:
+Clearly, the real part is handled by $\sum_{n = 0}^{N - 1}{x[n]}(\cos \frac{2\text{πkn}}{N})$, and the imaginary part is handled by $- j \sum_{n = 0}^{N - 1}{x[n]}{sin}( \frac{2{πkn}}{N})$. Let’s define $cos (\frac{2\text{πkn}}{N}) = cos(kt)$, so we can summarize the equation as follows:
 
 - Real part: $Re[k]=\sum_{n = 0}^{N - 1}{x[n]}cos(kt)$
 
