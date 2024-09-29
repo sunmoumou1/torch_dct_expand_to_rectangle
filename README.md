@@ -152,7 +152,7 @@ $$
 2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{2\pi (n+\frac{1}{2})k}{2N}\right)}=2*\sum_{n=0}^{N-1}{x^{'}[n]cos\left(\frac{(n+\frac{1}{2}) \pi k}{N}\right)}
 $$
 
-Now, we are very close to the standard DCT formula. The remaining issue is: what is that $c(u)$ term in the standard formula?
+Now, we are very close to the standard DCT formula. The remaining issue is: what is that $\alpha(u)$ term in the standard formula?
 
 In the case of DCT, this term appears mainly to orthogonalize the matrix when the DCT transformation is represented in matrix form, making further computation easier. In this case, the coefficient should be set to $\sqrt{\frac{1}{2N}}$ (except when $k=0$, which requires separate consideration; for a detailed derivation, refer to the reference).
 
@@ -226,7 +226,7 @@ $$
 X[N - k] = \overline{X[k]},
 $$
 
-__Here is the proof of this conclusion:__
+> Here is the proof of this conclusion:
 
 The Discrete Fourier Transform (DFT) converts a time-domain signal $x[n]$ into its frequency-domain representation $X[k]$, defined as:
 
