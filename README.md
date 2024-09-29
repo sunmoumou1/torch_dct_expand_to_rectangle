@@ -116,7 +116,7 @@ $$
 
 Simply speaking, the signal becomes as shown in the following figure:
 
-![1.png](./images/1.png)
+![2.png](./images/2.png)
 
 The blue line represents the original signal, and the red line represents the extended signal.
 
@@ -128,7 +128,7 @@ $$
 
 However, extending the signal in this way introduces a problem: this signal is not symmetric around $m=0$, but around $m=-\frac{1}{2}$. Therefore, to make the signal symmetric about the origin, it’s a good idea to shift the entire extended signal by $\frac{1}{2}$ units to the right:
 
-![2.png](./images/2.png)
+![1.png](./images/1.png)
 
 $$
 X[k]=\sum_{m=-N+\frac{1}{2}}^{N-\frac{1}{2}}{x^{'}[m-\frac{1}{2}]e^{\frac{-j2\pi mk}{2N}}}
