@@ -282,6 +282,8 @@ $$
 X[N - k] = \overline{X[k]}.
 $$
 
+---
+
 <span style="background:#fff88f">This conclusion indicates that the frequency domain representation of a real sequence exhibits conjugate symmetry, meaning that the Fourier transform of a real sequence is symmetric about the midpoint, with opposite signs for the imaginary part.</span>
 
 Understanding this conclusion clarifies why the code operates as follows:

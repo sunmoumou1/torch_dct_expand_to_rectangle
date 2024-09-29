@@ -6,7 +6,7 @@ class LinearDCT(nn.Linear):
     """
     Implements DCT as a linear layer that can handle 2D fields with unequal height and width.
     :param in_features: Input feature dimension
-    :param type: Type of DCT used, such as 'dct', 'idct', etc.
+    :param type: Type of DCT used, such as 'dct', 'idct'.
     :param norm: Normalization parameter
     """
     def __init__(self, in_features, type, norm=None, bias=False):
