@@ -64,11 +64,7 @@ Clearly, the real part is handled by $\sum_{n = 0}^{N - 1}{x[n]}(\cos \frac{2\te
 
 Obviously, since cosine is an even function and sine is an odd function, we get:
 
-> When $x[n]$ is a real function, its real part in the frequency domain is an even function, while its imaginary part is an odd function.
-
----
-
-Now, what happens if the original signal $x[n]$ is a real and even function? Clearly, since an even function multiplied by an even function is still an even function, and an odd function multiplied by an even function is still odd, we get: $x[n]sin(kt)$ becomes an odd function. Since it’s an odd function, naturally:
+> If the original signal $x[n]$ is a real and even function? Clearly, since an even function multiplied by an even function is still an even function, and an odd function multiplied by an even function is still odd, we get: $x[n]sin(kt)$ becomes an odd function. Since it’s an odd function, naturally:
 
 $$
 Im[k]=-\sum_{n = 0}^{N - 1}{x[n]}sin(kt)=0
