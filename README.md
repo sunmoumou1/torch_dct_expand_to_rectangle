@@ -120,7 +120,7 @@ Simply speaking, the signal becomes as shown in the following figure:
 
 The blue line represents the original signal, and the red line represents the extended signal.
 
-This way, we’ve transformed a real signal into a real and even signal. Now, how do we write the DFT transformation for this extended signal? Clearly, the signal’s interval has now changed from $[0, N-1]$ to $[-N, N-1]$, so the DFT formula becomes:
+This way, we’ve transformed a real signal into **a real and even signal**. Now, how do we write the DFT transformation for this extended signal? Clearly, the signal’s interval has now changed from $[0, N-1]$ to $[-N, N-1]$, so the DFT formula becomes:
 
 $$
 X[k]=\sum_{m=-N}^{N-1}{x^{'}[m]e^{\frac{-j2\pi mk}{2N}}} \quad \text{(Note that the length of the extended signal is now 2N)}
