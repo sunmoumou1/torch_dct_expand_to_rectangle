@@ -85,19 +85,19 @@ __But this isn’t quite enough yet!__
  You might notice that this still looks a bit different from the DCT formula you see in textbooks. Let’s take a look at the most commonly used DCT transformation formula:
 
 $$
-F(u)=c(u)\sum_{x=0}^{N-1}{f(x)cos\left[\frac{(x+0.5)\pi}{N}u\right]}
+F(u)=\alpha (u)\sum_{x=0}^{N-1}{f(x)cos\left[\frac{(x+0.5)\pi}{N}u\right]}
 $$
 
 Where, when $u=0$:
 
 $$
-c(0)=\sqrt{\frac{1}{N}}
+\alpha (0)=\sqrt{\frac{1}{N}}
 $$
 
 Otherwise:
 
 $$
-c(u)=\sqrt{\frac{2}{N}}
+\alpha (u)=\sqrt{\frac{2}{N}}
 $$
 
 If this is the first time you’ve seen the DCT transformation, you might be a bit confused. What’s going on here? We said that DCT is just a DFT transformation of a real and even input signal, right? Don’t worry, let me explain it in detail.
