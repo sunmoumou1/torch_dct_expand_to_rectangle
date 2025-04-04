@@ -1,6 +1,6 @@
 # torch_dct_expand_to_rectangle
 
-# Headline News!!!!
+# Headline News!!!!!!!!!
 This repository is a modified version of the original [torch_dct](https://github.com/zh217/torch-dct). The original code from the repository only supported discrete cosine transform (DCT) and inverse discrete cosine transform (IDCT) on square matrices. I have extended the functionality to support DCT and IDCT on matrices with unequal height and width, allowing for broader applicability in scenarios where non-square matrices are involved.
 
 Below are Referenced from:
